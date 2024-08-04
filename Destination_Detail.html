@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Travel Database</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Travel Database</a>
+
+        <ul>
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+            <a href="Destination.html">Destinations</a>
+          </li>
+          <li>
+            <a href="Travel_Report.html">Travel Report</a>
+          </li>
+          <li>
+            <a href="Travel_Tips.html">Travel Tips</a>
+          </li>
+        </ul>      
+      </nav>
+    </header>
+    <main>
+
+      <h1>Travel Details</h1>
+      <section id="DestinationsDetails"></section>
+      
+    </main>
+
+    <script>
+      
+        // Database
+        let destination = [
+          {
+            id: "1",
+            name: "Paris",
+            Duration: "7 days",
+            Highlights: "Eiffel Tower, Louvre Museum",
+            Details: "A wonderful trip to the romantic city of Paris."
+            
+          },
+          {
+            id: "2",
+            name: "Tokyo",
+            Duration: "7 days",
+            Highlights: "Tokyo Tower,Meiji Shrine",
+            Details: "A wonderful trip to the city Tokyo."
+          },
+          {
+            id: "3",
+            name: "Rome",
+            Duration: "7 days",
+            Highlights: "Colosseum ,Vatican City",
+            Details: "A wonderful trip to the city of Rome."
+          },
+          {
+            id: "4",
+            name: "New York City",
+            Duration: "7 days",
+            Highlights: "Statue of Liberty, Central Park",
+            Details: "A wonderful trip to the city of New York City."
+          },
+          {
+            id: "5",
+            name: "Cape Town",
+            Duration: "7 days",
+            Highlights: "Table Mountain, Robben Island",
+            Details: "A wonderful trip to the city of Cape Town."
+          },
+          {
+            id: "6",
+            name: "Sydney",
+            Duration: "7 days",
+            Highlights: "Sydney Opera House, Bondi Beach",
+            Details: "A wonderful trip to the city of Sydney."
+          }
+
+          
+        ];
+
+        function getParameterById(name) {
+          let url = new URL(window.location.href);
+          return url.searchParams.get(name);
+        }
+
+        let Destid = getParameterById("id");
+
+        let Dest;
+        for (let i = 0; i < destination.length; i++) {
+          if (destination[i].id === Destid) {
+            Dest = destination[i];
+          }
+        }
+
+        let DestDetails = document.getElementById("DestinationsDetails");
+        DestDetails.innerHTML = `
+          <h2>${Dest.name}</h2>
+       
+              <p><strong>Duration</strong>: ${Dest.Duration}</p>
+              <p><strong>Highlights</strong>: ${Dest.Highlights}</p>
+              <p><strong>Details</strong>: ${Dest.Details}<p/>
+        
+        `;
+      </script>
